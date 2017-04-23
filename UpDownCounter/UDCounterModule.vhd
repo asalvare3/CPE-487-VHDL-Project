@@ -43,11 +43,16 @@ architecture Behavioral of UDCounterModule is
 function countQ(Q: in std_logic_vector, UD: in std_logic) return std_logic_vector(4 downto 1) is
   begin
     if (UD = '1') then --up counting
-      if (Q < 9) then
+      if (Q < 9) or (Q = 10) or (Q = 12) or (Q = 14) then
         return Q + 1;
       elsif (Q = 9) then
-        rturn 0;
-      elsif (
+        return 0;
+      elsif (Q = 11) then
+        return 6;
+      elsif (Q = 13) then
+        return 4;
+      elsif (Q = 15) then
+        return 2;
     else                --down counting
       
     
