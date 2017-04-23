@@ -31,9 +31,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity UDCounterModule is
   port(Cin,Clk,PE,Res,UD: in std_logic;
-       P: in std_logic_vector(1 to 4);
+       P: in std_logic_vector(4 downto 1);
        Cout: out std_logic;
-       Q: out std_logic_vector(1 to 4));
+       Q: out std_logic_vector(4 downto 1));
 end UDCounterModule;
 
 architecture Behavioral of UDCounterModule is
@@ -51,7 +51,7 @@ begin
     elsif (UD = '0' and Q = "0000") then
       Cout <= '0';
     else
-      Cout = '1';
+      Cout <= '1';
     end if;
   end process;
       
