@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.std_logic_unsigned.all;
+
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -38,8 +40,19 @@ end UDCounterModule;
 
 architecture Behavioral of UDCounterModule is
 
-
-
+function countQ(Q: in std_logic_vector, UD: in std_logic) return std_logic_vector(4 downto 1) is
+  begin
+    if (UD = '1') then --up counting
+      if (Q < 9) then
+        return Q + 1;
+      elsif (Q = 9) then
+        rturn 0;
+      elsif (
+    else                --down counting
+      
+    
+    
+  end 
 begin
   
   SetCout: process(Q,UD,Cin) is
@@ -65,7 +78,7 @@ begin
     elsif Cin = '1' then
       null;
     elsif rising_edge(Clk) = '1' then
-      
+      Q = countQ(Q,UD)
     end if;
   end process;
       
