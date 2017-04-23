@@ -54,10 +54,14 @@ function countQ(Q: in std_logic_vector, UD: in std_logic) return std_logic_vecto
       elsif (Q = 15) then
         return 2;
     else                --down counting
+      if (Q<10 and Q>0) then
+        return Q-1;
+      elsif (Q=0) then
+        return 9;
+      else
+        return Q-1;
+  end countQ;
       
-    
-    
-  end 
 begin
   
   SetCout: process(Q,UD,Cin) is
