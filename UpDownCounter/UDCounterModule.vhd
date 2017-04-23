@@ -46,10 +46,16 @@ function countQ(Q: in std_logic_vector, UD: in std_logic) return std_logic_vecto
       if (Q < 9) then
         return Q + 1;
       elsif (Q = 9) then
-        rturn 0;
-      elsif (
-    else                --down counting
-      
+        return 0;
+      else
+    else                --down counting   
+      if (Q<=9 and Q>0) then
+        return Q-1;
+      elsif (Q=0) then
+        return 9;
+      else
+       return Q-1;
+    
     
     
   end 
