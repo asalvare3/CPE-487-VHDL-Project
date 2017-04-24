@@ -81,14 +81,37 @@ begin
     
   begin
     if Res = '1' then
-      Q <= "0000";
+      Qs <= "0000";
     elsif PE = '1' then
-      Q <= P;
+      Qs <= P;
     elsif Cin = '1' then
       null;
-    elsif rising_edge(Clk) = '1' then
-      Q = countQ(Q,UD)
+    elsif rising_edge(Clk) then
+--     Qs = countQ(Qs,UD);
+
+  		if UD = '1' then --up counting
+  			if Qs < 9 or Qs = 10 or Qs = 12 or Qs = 14 then
+  				Qs <= Qs + 1;
+  			elsif Qs = 9 then
+  				Qs <=  "0000";
+  			elsif Qs = 11 then
+  				Qs <=  "0110";
+  			elsif Qs = 13 then
+  				Qs <=  "0100";
+  			elsif Qs = 15 then
+  				Qs <=  "0010";
+  			end if;
+  		else                --down counting
+  			if Qs < 10 and Qs > 0 then
+  				Qs <=  Qs - 1;
+  			elsif Qs = 0 then
+  				Qs <=  "1001";
+  			else
+  				Qs <=  Qs - 1;
+  			end if;
+  		end if;
     end if;
+	 
   end process;
       
 end behaviorOfUDCounter;
