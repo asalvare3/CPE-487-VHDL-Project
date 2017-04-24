@@ -62,8 +62,12 @@ architecture behaviorofUDCounter of UDCounterModule is
 --        return Q-1;
 --  end countQ;
       
+signal Qs: std_logic_vector(4 downto 1);
+	
 begin
   
+	Q <= Qs;
+	
   SetCout: process(Q,UD,Cin) is
   begin
     if Cin = '1' then
